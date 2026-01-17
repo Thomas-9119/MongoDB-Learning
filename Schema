@@ -1,0 +1,47 @@
+switched to db school
+school> show collections
+students
+school> db.students.find()
+[
+  { _id: ObjectId('6898b72f781de8806e748a5f'), name: 'Raj', age: 25 },
+  {
+    _id: ObjectId('6898b9c315d786d2558f0667'),
+    name: 'Rajparno',
+    id: '8558',
+    hobbies: [ 'playing', 'read' ]
+  },
+  {
+    _id: ObjectId('696b203911d5e54bad748a67'),
+    name: 'Ram',
+    age: 41,
+    isEligible: false
+  },
+  { _id: ObjectId('696b20b511d5e54bad748a68'), name: 'Vijay', age: 15 },
+  { _id: ObjectId('696b20b511d5e54bad748a69'), name: 'Chol', age: 78 }
+]
+school> db.students.find({},{name:1})
+[
+  { _id: ObjectId('6898b72f781de8806e748a5f'), name: 'Raj' },
+  { _id: ObjectId('6898b9c315d786d2558f0667'), name: 'Rajparno' },
+  { _id: ObjectId('696b203911d5e54bad748a67'), name: 'Ram' },
+  { _id: ObjectId('696b20b511d5e54bad748a68'), name: 'Vijay' },
+  { _id: ObjectId('696b20b511d5e54bad748a69'), name: 'Chol' }
+]
+school> db.students.find({},{name:1},{_id:0})
+[
+  { _id: ObjectId('6898b72f781de8806e748a5f'), name: 'Raj' },
+  { _id: ObjectId('6898b9c315d786d2558f0667'), name: 'Rajparno' },
+  { _id: ObjectId('696b203911d5e54bad748a67'), name: 'Ram' },
+  { _id: ObjectId('696b20b511d5e54bad748a68'), name: 'Vijay' },
+  { _id: ObjectId('696b20b511d5e54bad748a69'), name: 'Chol' }
+]
+school> db.students.find({name:1,_id:0})
+
+school> db.students.find({},{name:1,_id:0})
+[
+  { name: 'Raj' },
+  { name: 'Rajparno' },
+  { name: 'Ram' },
+  { name: 'Vijay' },
+  { name: 'Chol' }
+]
