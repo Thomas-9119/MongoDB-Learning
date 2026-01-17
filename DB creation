@@ -1,0 +1,17 @@
+test> use latest_db
+switched to db latest_db
+latest_db> db.students.insertOne({name: "Ram", age:12})
+{
+  acknowledged: true,
+  insertedId: ObjectId('696b0faf11d5e54bad748a5f')
+}
+latest_db> db.students.insertOne({name:"Raj", age:42})
+{
+  acknowledged: true,
+  insertedId: ObjectId('696b0fd811d5e54bad748a60')
+}
+latest_db> db.students.find()
+[
+  { _id: ObjectId('696b0faf11d5e54bad748a5f'), name: 'Ram', age: 12 },
+  { _id: ObjectId('696b0fd811d5e54bad748a60'), name: 'Raj', age: 42 }
+]
