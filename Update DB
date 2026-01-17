@@ -1,0 +1,101 @@
+latest_db> show dbs
+admin            40.00 KiB
+car_dealership  120.00 KiB
+class            72.00 KiB
+config          108.00 KiB
+firstdb          72.00 KiB
+latest_db        72.00 KiB
+local            88.00 KiB
+pos-db           60.00 KiB
+school           72.00 KiB
+latest_db> use school
+switched to db school
+school> db.students.find()
+[
+  { _id: ObjectId('6898b72f781de8806e748a5f'), name: 'Raj', age: 25 },
+  {
+    _id: ObjectId('6898b9c315d786d2558f0667'),
+    name: 'Rajparno',
+    id: '8558',
+    hobbies: [ 'playing', 'read' ]
+  },
+  { _id: ObjectId('696b203911d5e54bad748a67'), name: 'Ram', age: 14 },
+  { _id: ObjectId('696b20b511d5e54bad748a68'), name: 'Vijay', age: 89 },
+  { _id: ObjectId('696b20b511d5e54bad748a69'), name: 'Chol', age: 78 }
+]
+school> db.students.updateOne({name:"Vijay"},{$set:{age:15}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find()
+[
+  { _id: ObjectId('6898b72f781de8806e748a5f'), name: 'Raj', age: 25 },
+  {
+    _id: ObjectId('6898b9c315d786d2558f0667'),
+    name: 'Rajparno',
+    id: '8558',
+    hobbies: [ 'playing', 'read' ]
+  },
+  { _id: ObjectId('696b203911d5e54bad748a67'), name: 'Ram', age: 14 },
+  { _id: ObjectId('696b20b511d5e54bad748a68'), name: 'Vijay', age: 15 },
+  { _id: ObjectId('696b20b511d5e54bad748a69'), name: 'Chol', age: 78 }
+]
+school> db.students.updateMany({age:14},{$set:{age:41}})\
+Uncaught:
+SyntaxError: Expecting Unicode escape sequence \uXXXX. (1:49)
+
+> 1 | db.students.updateMany({age:14},{$set:{age:41}})\
+    |                                                  ^
+  2 |
+
+school> db.students.updateMany({age:14},{$set:{age:41}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find()
+[
+  { _id: ObjectId('6898b72f781de8806e748a5f'), name: 'Raj', age: 25 },
+  {
+    _id: ObjectId('6898b9c315d786d2558f0667'),
+    name: 'Rajparno',
+    id: '8558',
+    hobbies: [ 'playing', 'read' ]
+  },
+  { _id: ObjectId('696b203911d5e54bad748a67'), name: 'Ram', age: 41 },
+  { _id: ObjectId('696b20b511d5e54bad748a68'), name: 'Vijay', age: 15 },
+  { _id: ObjectId('696b20b511d5e54bad748a69'), name: 'Chol', age: 78 }
+]
+school>  db.students.updateMany({age:41},{$set:{isEligible:false}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find()
+[
+  { _id: ObjectId('6898b72f781de8806e748a5f'), name: 'Raj', age: 25 },
+  {
+    _id: ObjectId('6898b9c315d786d2558f0667'),
+    name: 'Rajparno',
+    id: '8558',
+    hobbies: [ 'playing', 'read' ]
+  },
+  {
+    _id: ObjectId('696b203911d5e54bad748a67'),
+    name: 'Ram',
+    age: 41,
+    isEligible: false
+  },
+  { _id: ObjectId('696b20b511d5e54bad748a68'), name: 'Vijay', age: 15 },
+  { _id: ObjectId('696b20b511d5e54bad748a69'), name: 'Chol', age: 78 }
+]
