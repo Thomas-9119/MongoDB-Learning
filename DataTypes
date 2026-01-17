@@ -1,0 +1,19 @@
+test> use office
+switched to db office
+office> db.companydata.insertOne({name:"Amazon", isFunded:true,funding:655555, employees:[{name:"Vipul",age:78},{name:"Kaju",age:89}], foundedOn:new Date(),Timestamp: new Timestamp()})
+{
+  acknowledged: true,
+  insertedId: ObjectId('696b7a6a27092fca23748a5f')
+}
+office> db.companydata.find()
+[
+  {
+    _id: ObjectId('696b7a6a27092fca23748a5f'),
+    name: 'Amazon',
+    isFunded: true,
+    funding: 655555,
+    employees: [ { name: 'Vipul', age: 78 }, { name: 'Kaju', age: 89 } ],
+    foundedOn: ISODate('2026-01-17T12:02:50.883Z'),
+    Timestamp: Timestamp({ t: 1768651370, i: 1 })
+  }
+]
