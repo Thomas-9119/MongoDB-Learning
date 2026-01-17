@@ -1,0 +1,339 @@
+latest_db> show collections
+students
+latest_db> db.students.find()
+[
+  {
+    _id: ObjectId('696b0faf11d5e54bad748a5f'),
+    name: 'Ram',
+    age: 12,
+    idCards: { hasPanCard: false, hasAdhaarCard: true },
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b0fd811d5e54bad748a60'),
+    name: 'Raj',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b127811d5e54bad748a61'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a62'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a63'),
+    name: 'Utu',
+    age: 74,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a64'),
+    name: 'tag',
+    age: 89,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a65'),
+    name: 'oman',
+    age: 7,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a66'),
+    name: 'Noman',
+    age: 78,
+    hobbies: [ 'Anime', 'Cooking' ]
+  }
+]
+latest_db> db.students.find({age<80})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:21)
+
+> 1 | db.students.find({age<80})
+    |                      ^
+  2 |
+
+latest_db> db.students.find({age:78})
+[
+  {
+    _id: ObjectId('696b12d311d5e54bad748a66'),
+    name: 'Noman',
+    age: 78,
+    hobbies: [ 'Anime', 'Cooking' ]
+  }
+]
+latest_db> db.students.find({age:42})
+[
+  {
+    _id: ObjectId('696b0fd811d5e54bad748a60'),
+    name: 'Raj',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b127811d5e54bad748a61'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a62'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  }
+]
+latest_db> db.students.findOne({age:42})
+{
+  _id: ObjectId('696b0fd811d5e54bad748a60'),
+  name: 'Raj',
+  age: 42,
+  hobbies: [ 'Anime', 'Cooking' ]
+}
+latest_db> db.students.find().forEach((x)=>{printjson(x)})
+{
+  _id: ObjectId('696b0faf11d5e54bad748a5f'),
+  name: 'Ram',
+  age: 12,
+  idCards: {
+    hasPanCard: false,
+    hasAdhaarCard: true
+  },
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b0fd811d5e54bad748a60'),
+  name: 'Raj',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b127811d5e54bad748a61'),
+  name: 'amol',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a62'),
+  name: 'amol',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a63'),
+  name: 'Utu',
+  age: 74,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a64'),
+  name: 'tag',
+  age: 89,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a65'),
+  name: 'oman',
+  age: 7,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a66'),
+  name: 'Noman',
+  age: 78,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+
+latest_db> db.students.find().forEach((x)=>{printjson(x)}).limit(2)
+{
+  _id: ObjectId('696b0faf11d5e54bad748a5f'),
+  name: 'Ram',
+  age: 12,
+  idCards: {
+    hasPanCard: false,
+    hasAdhaarCard: true
+  },
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b0fd811d5e54bad748a60'),
+  name: 'Raj',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b127811d5e54bad748a61'),
+  name: 'amol',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a62'),
+  name: 'amol',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a63'),
+  name: 'Utu',
+  age: 74,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a64'),
+  name: 'tag',
+  age: 89,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a65'),
+  name: 'oman',
+  age: 7,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a66'),
+  name: 'Noman',
+  age: 78,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+TypeError: Cannot read properties of undefined (reading 'limit')
+latest_db> db.students.find().forEach((x)=>{printjson(x)}).limit(2)
+{
+  _id: ObjectId('696b0faf11d5e54bad748a5f'),
+  name: 'Ram',
+  age: 12,
+  idCards: {
+    hasPanCard: false,
+    hasAdhaarCard: true
+  },
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b0fd811d5e54bad748a60'),
+  name: 'Raj',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b127811d5e54bad748a61'),
+  name: 'amol',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a62'),
+  name: 'amol',
+  age: 42,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a63'),
+  name: 'Utu',
+  age: 74,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a64'),
+  name: 'tag',
+  age: 89,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a65'),
+  name: 'oman',
+  age: 7,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+{
+  _id: ObjectId('696b12d311d5e54bad748a66'),
+  name: 'Noman',
+  age: 78,
+  hobbies: [
+    'Anime',
+    'Cooking'
+  ]
+}
+TypeError: Cannot read properties of undefined (reading 'limit')
+latest_db> db.students.find({age:{$lt:60}}).count()
+5
+latest_db> db.students.find({age:{$gte:60}}).count()
+3
+latest_db> db.students.find({age:{$gte:10,$lt:80}}).count()
+6
