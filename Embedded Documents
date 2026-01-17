@@ -1,0 +1,155 @@
+latest_db> db.students.insertMany({name:"amol", age:42},{name:"Utu",age:74},{name:"tag",age:89},{name:"oman",age:7},{name:"Noman", age:78})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+latest_db> db.students.insertMany([{name:"amol", age:42},{name:"Utu",age:74},{name:"tag",age:89},{name:"oman",age:7},{name:"Noman", age:78}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('696b12d311d5e54bad748a62'),
+    '1': ObjectId('696b12d311d5e54bad748a63'),
+    '2': ObjectId('696b12d311d5e54bad748a64'),
+    '3': ObjectId('696b12d311d5e54bad748a65'),
+    '4': ObjectId('696b12d311d5e54bad748a66')
+  }
+}
+latest_db> db.students.find()
+[
+  {
+    _id: ObjectId('696b0faf11d5e54bad748a5f'),
+    name: 'Ram',
+    age: 12,
+    idCards: { hasPanCard: false, hasAdhaarCard: true }
+  },
+  { _id: ObjectId('696b0fd811d5e54bad748a60'), name: 'Raj', age: 42 },
+  { _id: ObjectId('696b127811d5e54bad748a61'), name: 'amol', age: 42 },
+  { _id: ObjectId('696b12d311d5e54bad748a62'), name: 'amol', age: 42 },
+  { _id: ObjectId('696b12d311d5e54bad748a63'), name: 'Utu', age: 74 },
+  { _id: ObjectId('696b12d311d5e54bad748a64'), name: 'tag', age: 89 },
+  { _id: ObjectId('696b12d311d5e54bad748a65'), name: 'oman', age: 7 },
+  { _id: ObjectId('696b12d311d5e54bad748a66'), name: 'Noman', age: 78 }
+]
+latest_db> db.students.updateMany({},{$set:{hobbies:['Anime','Cooking']}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 8,
+  modifiedCount: 8,
+  upsertedCount: 0
+}
+latest_db> db.students.find()
+[
+  {
+    _id: ObjectId('696b0faf11d5e54bad748a5f'),
+    name: 'Ram',
+    age: 12,
+    idCards: { hasPanCard: false, hasAdhaarCard: true },
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b0fd811d5e54bad748a60'),
+    name: 'Raj',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b127811d5e54bad748a61'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a62'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a63'),
+    name: 'Utu',
+    age: 74,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a64'),
+    name: 'tag',
+    age: 89,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a65'),
+    name: 'oman',
+    age: 7,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a66'),
+    name: 'Noman',
+    age: 78,
+    hobbies: [ 'Anime', 'Cooking' ]
+  }
+]
+latest_db> db.students.find({hobbies:'cooking'})
+
+latest_db> db.students.find({hobbies:'Cooking'})
+[
+  {
+    _id: ObjectId('696b0faf11d5e54bad748a5f'),
+    name: 'Ram',
+    age: 12,
+    idCards: { hasPanCard: false, hasAdhaarCard: true },
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b0fd811d5e54bad748a60'),
+    name: 'Raj',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b127811d5e54bad748a61'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a62'),
+    name: 'amol',
+    age: 42,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a63'),
+    name: 'Utu',
+    age: 74,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a64'),
+    name: 'tag',
+    age: 89,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a65'),
+    name: 'oman',
+    age: 7,
+    hobbies: [ 'Anime', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('696b12d311d5e54bad748a66'),
+    name: 'Noman',
+    age: 78,
+    hobbies: [ 'Anime', 'Cooking' ]
+  }
+]
+latest_db> db.students.find({hobbies:'Cooking'}).count()
+8
+latest_db> db.students.find({'idCards.hasPanCard':false})
+[
+  {
+    _id: ObjectId('696b0faf11d5e54bad748a5f'),
+    name: 'Ram',
+    age: 12,
+    idCards: { hasPanCard: false, hasAdhaarCard: true },
+    hobbies: [ 'Anime', 'Cooking' ]
+  }
+]
